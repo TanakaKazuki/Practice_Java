@@ -1,11 +1,14 @@
 package org.example2;
 
 import java.util.Map;
+import java.util.Objects;
 import java.util.TreeMap;
 
-public class Hero {
+public class Hero implements Cloneable{
     private String name;
     private int hp,mp;
+
+    private Sword sword;
 
     //name,hp,mpのgetter,setter
     public void setName(String name){
@@ -18,6 +21,11 @@ public class Hero {
         this.hp = hp;
         this.mp = mp;
     }
+
+    public void setSword(Sword sword) {
+        this.sword = sword;
+    }
+
     public Map<String,Integer> getParameter(){
 
         Map<String,Integer> parameter = new TreeMap<>();
@@ -44,6 +52,36 @@ public class Hero {
     public String toString(){
         return "Hero（名前=" +this.name+
                 "HP="+this.hp+"MP="+this.mp+")";
+    }
+
+    //equalsメソッドのオーバーライド
+    @Override
+    public boolean equals(Object obj) {
+        if(obj == this){return true;}
+        if(obj == null){return false;}
+        if(!(obj instanceof Hero)){return false;}
+        Hero hh = (Hero)obj;
+        if(!this.name.equals(hh.name)){
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(this.name,this.hp,this.mp);
+    }
+
+    //✖️複製の処理のオーバーライド
+    //　複製の処理の実装
+    public Hero clone(){
+        Hero result = new Hero();
+        result.name = this.getName();
+        result.hp = this.getHp();
+        result.mp = this.getMp();
+        result.sword = this.sword.clone();
+
+        return result;
     }
 
     //コンストラクタ
