@@ -17,9 +17,18 @@ public class Account {
     public void setBalance(int balance) {
         this.balance = balance;
     }
+    public int getBalance(){
+        return this.balance;
+    }
 
     public Account(String accountNo, AccountType accountType){
         setAccountNo(accountNo);
         setAccountType(accountType);
+        setBalance(1200);
+    }
+    public Account(){
+        setAccountNo("123");
+        setAccountType(AccountType.FUTSU);
+        setBalance(1000);
     }
 }
