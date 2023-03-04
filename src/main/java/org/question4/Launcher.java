@@ -7,7 +7,10 @@ import java.lang.reflect.Method;
 public class Launcher {
     public static void main(String[] args){
         String fqcn = args[0];
-        String sw = args[1];
+        String fqcn2 = args[1];
+        String sw = args[2];
+
+        System.out.println(fqcn2);
 
         System.out.println(sw);
         //現在メモリに割り当てられたオブジェクトのメモリ使用量
@@ -15,17 +18,19 @@ public class Launcher {
 
         try{
             Class<?> activate_class = Class.forName(fqcn);
-
+            Class<?> activate_class2 = Class.forName(fqcn2);
             getMethodName(activate_class);
 
             if (sw.equals("E")){
                 System.out.println("別プロセスで実行する");
                 activate_another(activate_class);
+                activate_another(activate_class2);
 
 
             }else if(sw.equals("I")){
                 System.out.println("リフレクションでメインメソッドを実行する");
                 activate_reflect(activate_class);
+                activate_reflect(activate_class2);
 
             }else{
                 throw new IllegalArgumentException("起動方法の指定が不正です");

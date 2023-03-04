@@ -1,0 +1,11 @@
+3月 04, 2023 5:16:52 午後 org.example6.LoggerSample main
+情報: INFO
+3月 04, 2023 5:16:52 午後 org.example6.LoggerSample main
+警告: WARNING
+3月 04, 2023 5:16:52 午後 org.example6.LoggerSample main
+重大: SEVERE
+3月 04, 2023 5:16:52 午後 org.example6.LoggerSample main
+情報: 例外のスローを捕捉
+java.lang.IllegalArgumentException
+	at org.example6.LoggerSample.main(LoggerSample.java:33)
+
